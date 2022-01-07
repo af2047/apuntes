@@ -1,0 +1,29 @@
+site_name: Apuntes
+theme:
+    name: material
+    language: es
+    features:
+        - navigation.sections
+        - navigation.tabs
+        - navigation.instant
+    font:
+        text: Open Sans
+        code: Fira Code
+    palette:
+        - scheme: default
+          primary: light blue
+          accent: cyan
+          toggle:
+            icon: material/weather-night
+            name: Cambiar a colores nocturnos
+        - scheme: slate
+          primary: purple
+          accent: purple
+          toggle:
+            icon: material/weather-sunny
+            name: Cambiar a colores diurnos
+plugins:
+    - search
+    - mknotebooks
+extra_css:
+    - stylesheets/extra.css
