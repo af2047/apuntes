@@ -1,3 +1,5 @@
+# SQL
+
 ## SQL vs noSQL
 
 Las bases de datos se dividen en

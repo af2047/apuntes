@@ -1,5 +1,5 @@
 # --Examen parcial 19 nov 2021
-# --Andrés Fernández Alcázar - 22062204
+# --Andrés Fernández - 22062204
 
 
 # PREGUNTA 1 --------------------------------------------------------------

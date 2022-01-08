@@ -1,7 +1,3 @@
-
-
-
-
 # MongoDB Atlas
 
 Atlas es un servicio en la nube que ofrece acceso a bases de datos MongoDB. 
