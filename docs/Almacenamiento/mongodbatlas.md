@@ -42,11 +42,7 @@ Para ver todas las bases de datos en el proyecto, pulsar en `Databases` en el me
 
 ![](images/mongodbatlas/image-20211122201354238.png)
 
-Pulsar en `Connect` para autorizar las conexiones a la base de datos desde el exterior. Como es un proyecto de prueba no nos preocupa que sea público: elegir `Allow Access from Anywhere`, y a continuación `Add IP Address`.
-
-![](/Users/af/Dropbox/apuntes/Almacenamiento/images/mongodbatlas/image-20211125150341726.png)
-
-Por último, crear un usuario y contraseña para acceder a la base de datos.
+Pulsar en `Connect` para autorizar las conexiones a la base de datos desde el exterior. Como es un proyecto de prueba no nos preocupa que sea público: elegir `Allow Access from Anywhere`, y a continuación `Add IP Address`. Por último, crear un usuario y contraseña para acceder a la base de datos.
 
 ![](images/mongodbatlas/image-20211122204326697.png)
 

@@ -128,13 +128,20 @@ Las máquinas virtuales suelen usar sistemas operativos con muy pocos programas 
 
 Estos comandos requieren permisos de superusuario. (Ver sección siguiente)
 
-
-
 ## Comandos de superusuario
 
 En Unix hay usuarios normales, con permisos restringidos, y superusuarios (también llamados root), que tienen control absoluto sobre el sistema. En general se usa siempre una cuenta de usuario normal, para evitar romper cosas por accidente. Si queremos usar un comando que requiere permisos de superusuario, podemos usar la utilidad **sudo**, que ejecutará solamente ese comando como root (después de pedirnos la contraseña).
 
 ![En este ejemplo el comando apt no funciona, porque requiere permisos de root; hay que utilizar sudo para ejecutarlo como superusuario.](image-20211031205852154.png)
+
+## Cron jobs
+Cron se usa para que el sistema ejecute automáticamente scripts cada cierto tiempo.
+Cada usuario tiene una lista de trabajos cron, que se puede editar con `crontab -e`.
+En cada línea de la lista hay cinco números, que representan el minuto, hora, día, mes y día de la semana en que se debe ejecutar el script, y se pueden reemplazar por un * para que se ejecute siempre. Por ejemplo, para ejecutar un comando todos los días a las 9:24 de la noche, escribimos `24 21 * * *`. A continuación se escribe el comando a ejecutar. 
+
+![253165ddb9b1aef63c8741c211786222.png](images/253165ddb9b1aef63c8741c211786222.png)
+
+Los scripts se ejecutarán con los permisos del usuario al que corresponde la cron file. También hay una cron file del sistema, que puede ejecutar scripts con los permisos de cualquier usuario.
 
 ## Alternativas
 

@@ -4,7 +4,7 @@ R es un lenguaje de programación orientado a la estadística.
 
 ## Recursos
 
-* **Ejercicios en clase**: [gasolineras](gasolineras.R), [primer ejercicio de clase](EjercicioClase.R), [examen parcial](ExamenParcial.R)
+* **Ejercicios en clase**: [gasolineras](gasolineras.R), [primer ejercicio de clase](EjercicioClase.R), [examen parcial](ExamenParcial.R), [último ejercicio de clase](Actividad1.R)
 * "Cheat sheets": en el menú de RStudio, `Help -> Cheat Sheets`
 * [Documentación del tidyverse](https://www.tidyverse.org/packages/)
 * Libros: [R for Data Science](https://r4ds.had.co.nz/index.html), [Advanced R](https://adv-r.hadley.nz/index.html)
