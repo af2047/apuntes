@@ -24,11 +24,11 @@ theme:
             name: Cambiar a colores diurnos
 plugins:
     - search
-    - mknotebooks
+#    - mknotebooks
 extra_css:
     - stylesheets/extra.css
-markdown_extensions:
-    - admonition
-    - pymdownx.details
-    - pymdownx.superfences
-    - pymdownx.highlight
+#markdown_extensions:
+#    - admonition
+#    - pymdownx.details
+#    - pymdownx.superfences
+#    - pymdownx.highlight
