@@ -25,8 +25,8 @@ theme:
 plugins:
     - search
     - mknotebooks
-extra_css:
-    - stylesheets/extra.css
+#extra_css:
+#    - stylesheets/extra.css
 markdown_extensions:
     - admonition
     - pymdownx.details
