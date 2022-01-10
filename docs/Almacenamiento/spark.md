@@ -51,7 +51,6 @@ spark = SparkSession.builder\
 
 ???+ note
     En versiones anteriores de Spark, había varios puntos de entrada para cada parte de la aplicación: SparkContext para RDD, SQLContext para SQL, etc. SparkSession los combina todos en uno.
-???
 
 ## Estructura de la aplicación
 
@@ -85,22 +84,22 @@ Los dataframes se pueden manejar con SQL o con funciones. [Ver notebook con ejem
 ## SparkML
 La librería por defecto para aprendizaje automático en Spark es SparkML (`pyspark.ml`). Se puede utilizar con RDDs o dataframes.
 ```python
-from pyspark.ml.recommendation import ALS
-from pyspark.ml.evaluation import RegressionEvaluator  
+from pyspark.ml.recommendation import ALS
+from pyspark.ml.evaluation import RegressionEvaluator  
 
-(training, test) = ratings.randomSplit(\[0.8, 0.2\])
+(training, test) = ratings.randomSplit(\[0.8, 0.2\])
 
 # Entrenamos el modelo
-als = ALS(maxIter=5, regParam=0.01, userCol="user_id", itemCol="id", ratingCol="rating",
+als = ALS(maxIter=5, regParam=0.01, userCol="user_id", itemCol="id", ratingCol="rating",
 coldStartStrategy="drop")
-model = als.fit(training)
+model = als.fit(training)
 
-# Evaluamos el modelo con RMSE
-predictions = model.transform(test)
-evaluator = RegressionEvaluator(metricName="rmse", labelCol="rating", predictionCol="prediction")
-rmse = evaluator.evaluate(predictions) 
-print("Root-mean-square error = " + str(rmse))
+# Evaluamos el modelo con RMSE
+predictions = model.transform(test)
+evaluator = RegressionEvaluator(metricName="rmse", labelCol="rating", predictionCol="prediction")
+rmse = evaluator.evaluate(predictions) 
+print("Root-mean-square error = " + str(rmse))
 
-# Generar las 10 mejores recomendaciones para un subconjunto de usuarios
-userSubsetRecs = model.recommendForUserSubset(usuario_EP, 5)
+# Generar las 10 mejores recomendaciones para un subconjunto de usuarios
+userSubsetRecs = model.recommendForUserSubset(usuario_EP, 5)
 ```

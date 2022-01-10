@@ -313,7 +313,7 @@ m <- df3 %>% leaflet() %>%
 m  # Mostrar el mapa
 ```
 
-Para más opciones de visualización, [https://www.htmlwidgets.org](htmlwidgets.org).
+Para más opciones de visualización, [https://www.htmlwidgets.org](https://htmlwidgets.org).
 
 ## Uso de memoria
 
