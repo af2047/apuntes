@@ -1,0 +1,986 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>Línea de comandos de Linux - Apuntes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700%7CFira+Code&display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="cyan">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linea-de-comandos-de-linux" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Apuntes" class="md-header__button md-logo" aria-label="Apuntes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Apuntes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Línea de comandos de Linux
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="cyan"  aria-label="Cambiar a colores nocturnos"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a colores nocturnos" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="purple" data-md-color-accent="purple"  aria-label="Cambiar a colores diurnos"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a colores diurnos" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Índice
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Almacenamiento/mongodb/" class="md-tabs__link">
+        Almacenamiento
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Cosas varias
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Estad%C3%ADstica/R/" class="md-tabs__link">
+        Estadística
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Apuntes" class="md-nav__button md-logo" aria-label="Apuntes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Apuntes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Índice
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Almacenamiento
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Almacenamiento" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Almacenamiento
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Almacenamiento/mongodb/" class="md-nav__link">
+        MongoDB
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Almacenamiento/mongodbatlas/" class="md-nav__link">
+        MongoDB Atlas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Almacenamiento/spark-dataframes/" class="md-nav__link">
+        Spark dataframes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Almacenamiento/spark/" class="md-nav__link">
+        Spark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Almacenamiento/sql/" class="md-nav__link">
+        SQL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Cosas varias
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Cosas varias" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Cosas varias
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Línea de comandos de Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Línea de comandos de Linux
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sistema-de-archivos" class="md-nav__link">
+    Sistema de archivos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navegacion" class="md-nav__link">
+    Navegación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archivos-y-directorios" class="md-nav__link">
+    Archivos y directorios
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ayuda" class="md-nav__link">
+    Ayuda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manejo-de-texto" class="md-nav__link">
+    Manejo de texto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editores-de-texto" class="md-nav__link">
+    Editores de texto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secure-shell" class="md-nav__link">
+    Secure Shell
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalar-programas" class="md-nav__link">
+    Instalar programas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandos-de-superusuario" class="md-nav__link">
+    Comandos de superusuario
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cron-jobs" class="md-nav__link">
+    Cron jobs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternativas" class="md-nav__link">
+    Alternativas
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        Git y GitHub
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Estadística
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Estadística" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Estadística
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Estad%C3%ADstica/R/" class="md-nav__link">
+        R
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sistema-de-archivos" class="md-nav__link">
+    Sistema de archivos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navegacion" class="md-nav__link">
+    Navegación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archivos-y-directorios" class="md-nav__link">
+    Archivos y directorios
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ayuda" class="md-nav__link">
+    Ayuda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manejo-de-texto" class="md-nav__link">
+    Manejo de texto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editores-de-texto" class="md-nav__link">
+    Editores de texto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secure-shell" class="md-nav__link">
+    Secure Shell
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalar-programas" class="md-nav__link">
+    Instalar programas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandos-de-superusuario" class="md-nav__link">
+    Comandos de superusuario
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cron-jobs" class="md-nav__link">
+    Cron jobs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternativas" class="md-nav__link">
+    Alternativas
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="linea-de-comandos-de-linux">Línea de comandos de Linux</h1>
+<p>La mayoría de sistemas operativos basados en Linux contienen un conjunto de programas pequeños conocidos como GNU coreutils, que dan acceso a la funcionalidad básica del sistema: manejo de archivos, edición de texto, etc.</p>
+<p><img alt="image-20211031213400789" src="../image-20211031213400789.png" /></p>
+<p>Las opciones pueden ser cortas (<strong>ls -l</strong>) o largas (<strong>ls --version</strong>). Las opciones cortas se pueden dar todas a la vez: <strong>ls -lsr</strong>. Al contrario que Windows, Unix distingue mayúsculas de minúsculas. </p>
+<p>Pulsar <strong>Ctrl-C</strong> interrumpe la ejecución de cualquier programa.</p>
+<h2 id="sistema-de-archivos">Sistema de archivos</h2>
+<p>Al igual que Windows, Unix emplea un sistema de archivos jerárquico.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Windows</strong></th>
+<th><strong>Linux</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Directorio raíz</td>
+<td>C:\</td>
+<td>/</td>
+</tr>
+<tr>
+<td>Otros discos duros / USB / etc.</td>
+<td>D:\,  E:\,  etc.</td>
+<td>/mnt/sda1,   /mnt/sda2,  etc.</td>
+</tr>
+<tr>
+<td>Directorio casa del usuario</td>
+<td>C:\Usuarios\nombre_usuario</td>
+<td>/home/ nombre_usuario  <br />Atajo:   ~</td>
+</tr>
+<tr>
+<td>Escritorio</td>
+<td>C:\Usuarios\nombre\Escritorio</td>
+<td>~/Desktop</td>
+</tr>
+<tr>
+<td>Archivos de programa</td>
+<td>C:\Archivos de programa  <br />C:\Archivos de programa (x64)</td>
+<td>/usr/bin</td>
+</tr>
+</tbody>
+</table>
+<p>El símbolo ~ se puede escribir con AltGr + 4 y hace referencia al directorio “casa” del usuario actual. </p>
+<p>Las rutas pueden ser </p>
+<ul>
+<li>
+<p>absolutas (/usr/ejemplo.txt)</p>
+</li>
+<li>
+<p>relativas al directorio actual (ejemplo.txt)</p>
+</li>
+<li>
+<p>relativas al directorio casa del usuario (~/ejemplo.txt)</p>
+</li>
+</ul>
+<h2 id="navegacion">Navegación</h2>
+<ul>
+<li>
+<p><strong>pwd</strong> (present working directory): mostrar la ruta completa del directorio actual</p>
+</li>
+<li>
+<p><strong>ls</strong> <em>directorio</em> (list): muestra todos los archivos en el directorio dado. Si no le pasamos ningún argumento, utiliza el directorio actual</p>
+</li>
+<li><strong>ls -l</strong> incluye información sobre el tamaño y permisos de los archivos</li>
+<li><strong>ls -a</strong> incluye archivos ocultos</li>
+<li>
+<p><strong>ls -R</strong> muestra también los archivos en subdirectorios</p>
+</li>
+<li>
+<p><strong>cd</strong> <em>directorio</em> (change directory): se mueve al directorio indicado</p>
+</li>
+<li>Para ir al directorio superior, <strong>cd ..</strong></li>
+</ul>
+<h2 id="archivos-y-directorios">Archivos y directorios</h2>
+<ul>
+<li>
+<p><strong>touch</strong> <em>nombre</em>: crea un archivo vacío</p>
+</li>
+<li>
+<p><strong>mkdir</strong> <em>directorio</em> (make directory): crea un directorio vacío</p>
+</li>
+<li>
+<p><strong>cp</strong> <em>origen</em> <em>destino</em>: copia el archivo origen al destino</p>
+</li>
+<li>
+<p><strong>mv</strong> <em>origen</em> <em>destino</em>: mueve el archivo origen al destino</p>
+</li>
+<li>
+<p><strong>rm</strong> <em>archivo</em> (remove): elimina un archivo</p>
+</li>
+<li>
+<p><strong>rmdir</strong> elimina directorios</p>
+</li>
+<li>
+<p>Para borrar todos los archivos y subdirectorios, <strong>rm –rf *.*</strong> (mirar bien en qué directorio estamos antes de ejecutar esto)</p>
+</li>
+</ul>
+<p><img alt="image-20211031205741911" src="../image-20211031205741911.png" /></p>
+<h2 id="ayuda">Ayuda</h2>
+<ul>
+<li><strong>man</strong> <em>comando</em> (manual): muestra instrucciones de uso de un comando</li>
+<li>Los manuales suelen tener muchas páginas. Para salir, pulsar q</li>
+</ul>
+<h2 id="manejo-de-texto">Manejo de texto</h2>
+<p>La mayoría de programas en Linux utilizan texto plano como entrada y salida. </p>
+<ul>
+<li>
+<p><strong>cat</strong> <em>archivo</em>: abre un archivo de texto y muestra su contenido. Si pasamos varios archivos, los concatena y después los muestra todos juntos</p>
+</li>
+<li>
+<p><strong>grep</strong> <em>texto</em> <em>archivo</em>: busca el texto dado en un archivo</p>
+</li>
+<li>
+<p><strong>sed</strong> <em>archivo operación</em> (stream editor): realiza búsquedas y sustituciones sencillas. El primer argumento es el archivo, y el segundo es un string cuya primera letra indica la operación que queremos hacer:</p>
+</li>
+<li><strong>s</strong> (substitute): busca una expresión y la sustituye por otra. La sintaxis es <strong>‘</strong><strong>s/</strong><strong>regexp</strong><strong>/</strong><strong>sustitución</strong><strong>/</strong><strong>g</strong><strong>’</strong> donde <em>regexp</em> es la expresión regular que buscamos, <em>sustitución</em> es el texto con el que la reemplazamos y la <em>g</em> (opcional) indica que queremos reemplazar todas las veces que aparezca la expresión y no sólo la primera.</li>
+<li><strong>d</strong> (delete): borra el texto. Se suele usar en combinación con un número de línea: <strong><code>1d</code></strong> elimina la primera línea.</li>
+</ul>
+<p>Normalmente la salida de un programa se muestra por pantalla. El operador <strong>|</strong> (pipe) permite concatenar comandos, pasando la salida de un comando como entrada al siguiente. También podemos almacenar la salida del comando en un archivo: <strong>&gt;&gt;</strong> añade la información al final del archivo, y <strong>&gt;</strong> lo sobreescribe.</p>
+<p>Por ejemplo, si tenemos una serie de precios que usan la coma como separador decimal y queremos cambiarlas a puntos:</p>
+<p><img alt="image-20211031205827167" src="../image-20211031205827167.png" /></p>
+<h2 id="editores-de-texto">Editores de texto</h2>
+<p>Casi todas las distribuciones de Linux incluyen al menos uno de estos editores de texto gráficos, que se pueden usar directamente desde la consola:</p>
+<ul>
+<li>
+<p><strong>nano</strong>: editor sencillo. Para abrir un archivo escribir en la consola nano <em>nombre_archivo</em>, y al terminar de editarlo salir con Ctrl-X.</p>
+</li>
+<li>
+<p><strong>vi</strong>: editor potente pero sorprendentemente difícil de usar. Ver https://www.openvim.com/ </p>
+</li>
+</ul>
+<h2 id="secure-shell">Secure Shell</h2>
+<p>Normalmente vamos a querer utilizar estos comandos para controlar máquinas de forma remota. La forma estándar de abrir un terminal en un ordenador diferente es <strong>ssh</strong> (secure shell).</p>
+<p>Antes de poder usarlo hay que instalar y configurar un servidor ssh en el ordenador remoto: <strong>apt install openssh-server</strong>. Una vez hecho esto, nos podemos conectar a él desde cualquier otro ordenador con <strong>ssh *direcciónIP*</strong>, y ejecutar comandos con <strong>ssh *servidor comando*</strong>.</p>
+<p>Los servicios en la nube (Google Cloud, etc.) ya manejan todo esto por nosotros, y permiten abrir una terminal en la máquina remota pulsando un botón:</p>
+<p><img alt="image-20211031205837851" src="../image-20211031205837851.png" /></p>
+<h2 id="instalar-programas">Instalar programas</h2>
+<p>Las máquinas virtuales suelen usar sistemas operativos con muy pocos programas instalados, para ahorrar espacio. Para instalar lo que necesitemos hay que usar un “gestor de paquetes”:</p>
+<ul>
+<li>En Debian, Ubuntu y similares, <strong>apt</strong>: </li>
+<li>apt get</li>
+<li>apt remove. Esto mantiene la configuración del programa; para borrarla usar apt purge</li>
+<li>
+<p>apt update</p>
+</li>
+<li>
+<p>En Alpine y otras distribuciones minimalistas, <strong>apk</strong>: </p>
+</li>
+<li>apk add</li>
+<li>apk del</li>
+<li>apk update</li>
+</ul>
+<p>Estos comandos requieren permisos de superusuario. (Ver sección siguiente)</p>
+<h2 id="comandos-de-superusuario">Comandos de superusuario</h2>
+<p>En Unix hay usuarios normales, con permisos restringidos, y superusuarios (también llamados root), que tienen control absoluto sobre el sistema. En general se usa siempre una cuenta de usuario normal, para evitar romper cosas por accidente. Si queremos usar un comando que requiere permisos de superusuario, podemos usar la utilidad <strong>sudo</strong>, que ejecutará solamente ese comando como root (después de pedirnos la contraseña).</p>
+<p><img alt="En este ejemplo el comando apt no funciona, porque requiere permisos de root; hay que utilizar sudo para ejecutarlo como superusuario." src="../image-20211031205852154.png" /></p>
+<h2 id="cron-jobs">Cron jobs</h2>
+<p>Cron se usa para que el sistema ejecute automáticamente scripts cada cierto tiempo.
+Cada usuario tiene una lista de trabajos cron, que se puede editar con <code>crontab -e</code>.
+En cada línea de la lista hay cinco números, que representan el minuto, hora, día, mes y día de la semana en que se debe ejecutar el script, y se pueden reemplazar por un * para que se ejecute siempre. Por ejemplo, para ejecutar un comando todos los días a las 9:24 de la noche, escribimos <code>24 21 * * *</code>. A continuación se escribe el comando a ejecutar. </p>
+<p><img alt="253165ddb9b1aef63c8741c211786222.png" src="../images/253165ddb9b1aef63c8741c211786222.png" /></p>
+<p>Los scripts se ejecutarán con los permisos del usuario al que corresponde la cron file. También hay una cron file del sistema, que puede ejecutar scripts con los permisos de cualquier usuario.</p>
+<p>Para que el script funcione hay que marcarlo como ejecutable: <code>sudo chmod +x backup.sh</code>.</p>
+<h2 id="alternativas">Alternativas</h2>
+<p>Hay también sistemas basados en Linux que no utilizan las coreutils de GNU. La mayoría de los comandos en este documento seguirán funcionando, pero algunos tendrán menos opciones o directamente no existirán. A veces podremos instalar los programas que faltan con un gestor de aplicaciones.</p>
+<ul>
+<li>
+<p><strong>Busybox:</strong> es un sustituto de las coreutils para sistemas que tienen que ocupar muy poco espacio, como Alpine Linux. Contiene la mayoría de los programas, pero suelen tener menos opciones. </p>
+</li>
+<li>
+<p><strong>Mac OS:</strong> como son Apple, implementan únicamente los programas que les da la gana. </p>
+</li>
+<li>
+<p><strong>Hadoop:</strong> HDFS no es un sistema operativo, sino un sistema de archivos distribuido. Aunque algunos comandos de Hadoop tienen el mismo nombre, la forma de trabajar es totalmente diferente. </p>
+</li>
+</ul>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="../../Almacenamiento/sql/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: SQL" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              SQL
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../git/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Git y GitHub" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Git y GitHub
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.instant"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+    
+  </body>
+</html>
