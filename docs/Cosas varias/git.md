@@ -114,3 +114,14 @@ Para subir nuestros cambios al repositorio remoto, usar `git push origin master`
   5. Si no hay conflictos, enviar nuestros cambios al repositorio remoto con `git push`
 
 En proyectos más grandes, tradicionalmente se usaban flujos de trabajo más complejos como [GitFlow](https://nvie.com/posts/a-successful-git-branching-model/). En la actualidad es más común usar un modelo con una sola rama, a la que se van añadiendo cambios pequeños de forma tan frecuente como sea posible ([trunk-based development](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development)).
+
+## Git en Mac
+
+Para que Git maneje los caracteres de final de línea y acentos correctamente, hay que activar estas dos opciones:
+
+```bash
+git config --global core.autocrlf input
+git config --global core.precomposeunicode true
+```
+
+Además, para usar GitHub hay que utilizar un token, ya que la autenticación por contraseña o a través de pasarela web no funciona.

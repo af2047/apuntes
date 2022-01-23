@@ -143,6 +143,8 @@ En cada línea de la lista hay cinco números, que representan el minuto, hora, 
 
 Los scripts se ejecutarán con los permisos del usuario al que corresponde la cron file. También hay una cron file del sistema, que puede ejecutar scripts con los permisos de cualquier usuario.
 
+Para que el script funcione hay que marcarlo como ejecutable: `sudo chmod +x backup.sh`.
+
 ## Alternativas
 
 Hay también sistemas basados en Linux que no utilizan las coreutils de GNU. La mayoría de los comandos en este documento seguirán funcionando, pero algunos tendrán menos opciones o directamente no existirán. A veces podremos instalar los programas que faltan con un gestor de aplicaciones.
